@@ -1,0 +1,40 @@
+# Limits
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
+php_value memory_limit 64M
+
+# Disable PHPSESSID in the URI
+php_value session.use_trans_sid Off
+
+# Turn on URL rewriting
+RewriteEngine On
+
+# Disable directory browsing
+Options -Indexes
+
+# Installation directory
+RewriteBase /
+
+# Protect hidden files from being viewed
+<Files .*>
+	Order Deny,Allow
+	Deny From All
+</Files>
+
+# Redirect non-www to www
+RewriteCond %{HTTP_HOST} !^www\.
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
+# Allow direct access to the public static files
+# (prevents another round trip to the application)
+RewriteRule ^(?:public)\b.* - [L]
+
+# Protect application and system files from being viewed
+RewriteRule ^(?:application|modules|system)\b.* index.php/$0 [L]
+
+# Allow any files or directories that exist to be displayed directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite all other URLs to index.php/URL
+RewriteRule .* index.php/$0 [PT]
