@@ -56,17 +56,23 @@ error_reporting(E_ALL | E_STRICT);
 // Set the full path to the docroot
 define('DOCROOT', realpath(dirname(__FILE__)).DIRECTORY_SEPARATOR);
 
-// Make the application relative to the docroot, for symlink'd index.php
 if ( ! is_dir($application) AND is_dir(DOCROOT.$application))
+{
+	// Make the application relative to the docroot
 	$application = DOCROOT.$application;
+}
 
-// Make the modules relative to the docroot, for symlink'd index.php
 if ( ! is_dir($modules) AND is_dir(DOCROOT.$modules))
+{
+	// Make the modules relative to the docroot
 	$modules = DOCROOT.$modules;
+}
 
-// Make the system relative to the docroot, for symlink'd index.php
 if ( ! is_dir($system) AND is_dir(DOCROOT.$system))
+{
+	// Make the system relative to the docroot
 	$system = DOCROOT.$system;
+}
 
 // Define the absolute paths for configured directories
 define('APPPATH', realpath($application).DIRECTORY_SEPARATOR);
