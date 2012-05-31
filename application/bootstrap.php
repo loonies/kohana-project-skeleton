@@ -82,11 +82,11 @@ Kohana::$config->attach(new Kohana_Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-		// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
-		// 'database'   => MODPATH.'database',   // Database access
-		// 'image'      => MODPATH.'image',      // Image manipulation
-		// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
-	));
+	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
+	// 'database'   => MODPATH.'database',   // Database access
+	// 'image'      => MODPATH.'image',      // Image manipulation
+	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
+));
 
 /**
  * Set the cookie salt
