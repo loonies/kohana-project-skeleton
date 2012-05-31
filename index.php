@@ -82,30 +82,14 @@ define('SYSPATH', realpath($system).DIRECTORY_SEPARATOR);
 // Clean up the configuration vars
 unset($application, $modules, $system);
 
-/**
- * Define the start time of the application, used for profiling.
- */
-if ( ! defined('KOHANA_START_TIME'))
-{
-	define('KOHANA_START_TIME', microtime(TRUE));
-}
+// Load the base, low-level functions
+require SYSPATH.'base'.EXT;
 
-/**
- * Define the memory usage at the start of the application, used for profiling.
- */
-if ( ! defined('KOHANA_START_MEMORY'))
-{
-	define('KOHANA_START_MEMORY', memory_get_usage());
-}
+// Load the core Kohana class
+require SYSPATH.'classes/kohana/core'.EXT;
+
+// Load empty core extension
+require SYSPATH.'classes/kohana'.EXT;
 
 // Bootstrap the application
 require APPPATH.'bootstrap'.EXT;
-
-/**
- * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
- * If no source is specified, the URI will be automatically detected.
- */
-echo Request::factory()
-	->execute()
-	->send_headers()
-	->body();

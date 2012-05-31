@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The directory in which your application specific resources are located.
  * The application directory must contain the bootstrap.php file.
@@ -82,26 +81,20 @@ define('SYSPATH', realpath($system).DIRECTORY_SEPARATOR);
 // Clean up the configuration vars
 unset($application, $modules, $system);
 
-/**
- * Define the start time of the application, used for profiling.
- */
-if ( ! defined('KOHANA_START_TIME'))
-{
-	define('KOHANA_START_TIME', microtime(TRUE));
-}
+// Load the base, low-level functions
+require SYSPATH.'base'.EXT;
 
-/**
- * Define the memory usage at the start of the application, used for profiling.
- */
-if ( ! defined('KOHANA_START_MEMORY'))
+// Load the core Kohana class
+require SYSPATH.'classes/kohana/core'.EXT;
+
+// Load empty core extension
+require SYSPATH.'classes/kohana'.EXT;
+
+if ( ! defined('SUPPRESS_REQUEST'))
 {
-	define('KOHANA_START_MEMORY', memory_get_usage());
+	// Stop kohana from processing the request
+	define('SUPPRESS_REQUEST', TRUE);
 }
 
 // Bootstrap the application
 require APPPATH.'bootstrap'.EXT;
-
-echo 'Using Kohana '.Kohana::VERSION."\n";
-
-// Disable output buffering
-ob_end_flush();
