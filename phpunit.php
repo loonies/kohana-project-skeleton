@@ -102,6 +102,3 @@ if ( ! defined('KOHANA_START_MEMORY'))
 require APPPATH.'bootstrap'.EXT;
 
 echo 'Using Kohana '.Kohana::VERSION."\n";
-
-// Disable output buffering
-ob_end_flush();
