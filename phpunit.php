@@ -98,3 +98,5 @@ if ( ! defined('SUPPRESS_REQUEST'))
 
 // Bootstrap the application
 require APPPATH.'bootstrap'.EXT;
+
+echo 'Using Kohana '.Kohana::VERSION."\n";
