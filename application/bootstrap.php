@@ -79,7 +79,7 @@ Kohana::init(array(
 /**
  * Attach the file write to logging. Multiple writers are supported.
  */
-Kohana::$log->attach(new Log_File(APPPATH.'var/log/system'));
+Kohana::$log->attach(new Log_File(APPPATH.'var/logs/system'));
 
 /**
  * Attach a file reader to config. Multiple readers are supported.
